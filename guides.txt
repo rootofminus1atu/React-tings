@@ -1,0 +1,50 @@
+REACT APP:
+
+1. npm create vite@latest
+(it's easy from this point onwards)
+(vite >>>>>>> create-react-app)
+
+
+
+
+
+REACT ROUTER DOM:
+
+1. npm install react-router-dom
+
+
+
+
+
+TAILWIND:
+
+1. npm install -D tailwindcss postcss autoprefixer
+2. (check if you have those in package.json)
+3. npx tailwindcss init -p
+4. add these to tailwind.config.json to content
+    "./index.html",
+    "./src/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    possibly more
+5. add these to index.css
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+tutorial from:  https://www.freecodecamp.org/news/how-to-install-tailwindcss-in-react/
+
+
+
+
+
+REACT ICONS:
+
+1. npm install react-icons --save
+
+
+
+
+
+UUIDV4:
+
+1. npm install uuidv4

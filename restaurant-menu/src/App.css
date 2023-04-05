@@ -1,0 +1,92 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(252, 251, 250);
+    margin: 0;
+    padding: 5rem;
+}
+
+header {
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+.menu-btn-container {
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0;
+}
+
+.menu-btn {
+    appearance: none;
+    border: none;
+    background-color: transparent;
+
+    color: rgb(206, 157, 67);
+    padding: 0.5rem 0.8rem;
+    margin: 0 0.4rem;
+    font-size: larger;
+    border-radius: 0.3rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.menu-btn:hover {
+    background-color: rgb(206, 157, 67);
+    color: white;
+}
+
+.menu-btn::first-letter {
+    text-transform: uppercase;
+}
+
+
+
+ul {
+    padding: 0;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+    gap: 20px;
+    place-items: center;
+}
+
+.menu-item {
+    height: 10rem;
+    width: 100%;
+
+    display: flex;
+}
+
+.menu-item img {
+    height: 100%;
+    object-fit: contain;
+    border: 0.2rem solid rgb(206, 157, 67);
+    border-radius: 0.3rem;
+}
+
+.menu-item aside {
+    padding: 0 1rem;
+    width: 100%;
+}
+
+.menu-item .name-price {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid rgb(216, 210, 199);
+}
+
+.menu-item .name-price p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgb(206, 157, 67);
+}
+
+.menu-item .name-price p, .menu-item .name-price h3 {
+    margin: 0;
+    margin-bottom: 0.4rem;
+}
+
+
+
