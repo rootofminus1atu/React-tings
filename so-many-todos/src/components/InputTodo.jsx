@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react"
+import { FaPlusCircle } from "react-icons/fa"
 
 export default function InputTodo({ addTodo }) {
   const [message, setMessage] = useState("")
@@ -25,9 +26,11 @@ export default function InputTodo({ addTodo }) {
           placeholder="Add something..." 
           ref={titleRef}
         />
-        <button>Submit</button>
+        <button><FaPlusCircle /></button>
       </form>
-      <span className="text-red-900 text-xs">{message}</span>
+      <div className="flex items-center h-5">
+        <span className="text-red-900 text-xs ml-4">{message}</span>
+      </div>
     </section>
   )
 }

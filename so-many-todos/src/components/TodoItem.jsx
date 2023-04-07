@@ -1,7 +1,10 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import { FaTrash } from "react-icons/fa";
+import { AiFillEdit } from "react-icons/ai";
 
 export default function TodoItem({itemProp, handleChange, delTodo, updateTodo}) {
   const [editing, setEditing] = useState(false)
+  const editInputRef = useRef()
 
   const handleEditing = () => {
     setEditing(!editing)
@@ -9,6 +12,7 @@ export default function TodoItem({itemProp, handleChange, delTodo, updateTodo}) 
 
   const handleEditingDone = (event) => {
     if (event.key === 'Enter') {
+      updateTodo(editInputRef.current.value, itemProp.id)
       setEditing(false)
     }
   }
@@ -29,8 +33,11 @@ export default function TodoItem({itemProp, handleChange, delTodo, updateTodo}) 
             </p>): (
             <input 
               type="text"
-              value={itemProp.title}
-              onChange={(e) => updateTodo(e.target.value, itemProp.id)}
+              ref={editInputRef}
+              defaultValue={itemProp.title}
+              // value={itemProp.title}
+              // onChange={(e) => {updateTodo(e.target.value, itemProp.id); console.log(e.target.value)}}
+              // the aboute is bad, unless you need to know the state at each point in time
               onKeyDown={handleEditingDone}
               className={editing ? "block" : "hidden"} 
             />)
@@ -41,12 +48,14 @@ export default function TodoItem({itemProp, handleChange, delTodo, updateTodo}) 
         <button 
           onClick={handleEditing}
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded mr-2"
-        >Edit</button>
+        >
+          <AiFillEdit />
+        </button>
         <button 
           onClick={() => delTodo(itemProp.id)}
           className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded"
         >
-          Delete
+          <FaTrash />
         </button>
       </div>
     </li>

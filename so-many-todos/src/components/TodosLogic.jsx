@@ -1,15 +1,24 @@
 import InputTodo from "@/components/InputTodo"
 import TodoList from "@/components/TodoList"
 import TodoStats from "@/components/TodoStats"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { v4 as uuidv4 } from 'uuid'
 
 export default function TodosLogic() {
-  const [todos, setTodos] = useState([
-    { id: 1, title: 'Learn React', completed: false },
-    { id: 2, title: 'Learn Firebase', completed: false },
-    { id: 3, title: 'Learn GraphQL', completed: false },
-  ])
+  const [todos, setTodos] = useState([])
+
+  useEffect(() => {
+    const temp = localStorage.getItem('todos')
+    const loadedTodos = JSON.parse(temp)
+    if (loadedTodos) {
+      setTodos(prevTodos => [...prevTodos, ...loadedTodos])
+    }
+  }, [])
+
+  useEffect(() => {
+    const temp = JSON.stringify(todos)
+    localStorage.setItem('todos', temp)
+  }, [todos])
 
   const handleChange = (id) => {
     setTodos((prevState) =>
