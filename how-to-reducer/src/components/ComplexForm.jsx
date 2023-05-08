@@ -6,9 +6,10 @@ export default function ComplexForm() {
   const [state, dispatch] = useReducer(formReducer, INITIAL_STATE)
   const tagRef = useRef()
 
+  console.log(state)
+
   const handleChange = (e) => {
     dispatch({type: "CHANGE_INPUT", payload: e.target})
-    console.log(state)
   }
 
   const handleTags = () => {
