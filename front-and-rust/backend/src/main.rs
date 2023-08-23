@@ -1,6 +1,7 @@
 #[macro_use] extern crate rocket;
 
 use rocket::fairing::{Fairing, Info, Kind};
+use rocket::fs::NamedFile;
 use rocket::http::{Header, Status};
 use rocket::response::Redirect;
 use rocket::response::status::Custom;
@@ -152,6 +153,32 @@ async fn qualities(url: &str) -> Custom<Value> {
 
 }
 
+const DOWNLOADS_DIR: &str = "./downloads";
+use std::path::Path;
+
+#[post("/download-stream", data = "<stream>")]
+async fn download_stream(stream: Json<Stream>) -> Option<NamedFile> {
+    let vid_name = &stream.video_details.video_id;
+    let vid_file_name = format!("{}.mp4", vid_name); // Include .mp4 extension
+    let vid_path = Path::new(DOWNLOADS_DIR).join(vid_file_name);
+
+    println!("Video path: {}", vid_path.display());
+
+    if vid_path.exists() {
+        println!("Video file already exists: {}", vid_path.display());
+        return NamedFile::open(vid_path).await.ok();
+    }
+
+    println!("Video file does not exist: {}", vid_path.display());
+
+    if let Err(e) = stream.download_to_dir(DOWNLOADS_DIR).await {
+        println!("Error downloading stream: {}", e);
+        return None;
+    }
+
+    NamedFile::open(vid_path).await.ok()
+}
+
 
 #[launch]
 fn rocket() -> _ {
@@ -164,7 +191,7 @@ fn rocket() -> _ {
                 .unwrap()
         )
         .mount("/", routes![index, get_message, home])
-        .mount(API_PREFIX, routes![qualities])
+        .mount(API_PREFIX, routes![qualities, download_stream])
         .mount(TAURI_RELEASES, routes![google_keep_desktop])
 }
 
