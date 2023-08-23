@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useRef, useReducer } from 'react'
+import LoadingSpinner from './LoadingSpinner'
 
 const FetchType = {
   FETCH_START: 'FETCH_START',
@@ -48,20 +49,15 @@ const fetchReducer = (state, action) => {
 
 
 
-
-
-
-
 export const VideoOption = ({ option }) => {
   const [state, dispatch] = useReducer(fetchReducer, INITIAL_STATE)
+  const anchorRef = useRef(null)
 
   const downloadVid = async () => {
-
-    // make post request with the option
     try {
       dispatch({ type: FetchType.FETCH_START })
 
-      const res = await fetch('/api/download-stream', {
+      const response = await fetch('/api/download-stream', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -69,15 +65,12 @@ export const VideoOption = ({ option }) => {
         body: JSON.stringify(option)
       })
 
-      const blob = await res.blob()
-      const url = window.URL.createObjectURL(blob)
+      if (!response.ok) {
+        throw new Error(`Network response was not ok, status: ${response.status}`)
+      }
 
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'video.mp4';
-      a.textContent = 'Download Video THIS IS CORRECT';
-      
-      document.body.appendChild(a);
+      const blob = await response.blob()
+      const url = window.URL.createObjectURL(blob)
 
       dispatch({ type: FetchType.FETCH_SUCCESS, payload: url })
 
@@ -87,26 +80,33 @@ export const VideoOption = ({ option }) => {
     }
   }
 
+  const handleButtonClick = () => {
+    if (!state.done) {
+      downloadVid()
+    } else if (state.success) {
+      anchorRef.current.click()
+    }
+  }
+
   return (
     <div>
-      <button
-        onClick={downloadVid}
-      >
-        <h2>{option.quality_label}</h2>
-        <p>Download</p>
+      <button onClick={handleButtonClick}>
+        { state.loading ? (
+          <LoadingSpinner />
+        ) : state.error ? (
+          <p>Error {"("}sorry idk why{")"}</p>
+        ) : state.done ? (
+          <p>Success, download now!</p>
+        ) : (
+          <>
+            <h2>{option.quality_label}</h2>
+            <p>Download</p>
+          </>
+        )}
       </button>
-      {
-        state.loading && <p>Loading...</p>
-      }
-      {
-        state.error && <p>Error</p>
-      }
-      {
-        state.success && (<>
-        <p>Success, download video below</p>
-        <a href={state.url} download={`${state.url}.mp4`}>Download</a>
-        </>)
-      }
+      {state.done && state.success && (
+        <a ref={anchorRef} href={state.url} download={`${state.url}.mp4`} style={{ display: 'none' }}></a>
+      )}
     </div>
   )
 }

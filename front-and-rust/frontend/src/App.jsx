@@ -67,8 +67,6 @@ function App() {
   
       const options = await response.json()
 
-      console.log("lol success")
-
       dispatch({ type: ActionType.FETCH_SUCCESS, payload: options.streams })
 
     } catch (error) {
