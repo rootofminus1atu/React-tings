@@ -1,6 +1,8 @@
 import { useState, useRef, useReducer } from 'react'
 import './App.css'
 import { VideoOption } from './components/VideoOption'
+import TestComponent from './components/TestComponent'
+import AnotherTestComponent from './components/AnotherTestComponent'
 
 const ActionType = {
   FETCH_START: 'FETCH_START',
@@ -77,6 +79,7 @@ function App() {
 
   return (
     <>
+      <TestComponent />
       <input type="text" ref={inputRef}/>
       <button onClick={signal}>press me</button>
       {
