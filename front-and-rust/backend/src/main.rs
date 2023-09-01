@@ -148,7 +148,7 @@ async fn qualities(url: &str) -> Custom<Value> {
         }
     };
 
-    // Create a successful response
+    // response finally
     Custom(Status::Ok, json!({"message": "Success", "streams": streams}))
 
 }
@@ -159,7 +159,7 @@ use std::path::Path;
 #[post("/download-stream", data = "<stream>")]
 async fn download_stream(stream: Json<Stream>) -> Option<NamedFile> {
     let vid_name = &stream.video_details.video_id;
-    let vid_file_name = format!("{}.mp4", vid_name); // Include .mp4 extension
+    let vid_file_name = format!("{}.mp4", vid_name); // include .mp4 extension
     let vid_path = Path::new(DOWNLOADS_DIR).join(vid_file_name);
 
     println!("Video path: {}", vid_path.display());
