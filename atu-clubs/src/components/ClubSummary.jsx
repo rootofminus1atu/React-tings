@@ -1,6 +1,7 @@
 import React from 'react'
 import { getImgUrl } from '../helpers'
-import NavButton from './NavButton'
+import LinkButton from './LinkButton'
+import { Link } from 'react-router-dom'
 
 export default function ClubSummary({ club }) {
   return (
@@ -11,9 +12,9 @@ export default function ClubSummary({ club }) {
         alt={`${club.name} image`} 
         className="img-fluid" />
       <p>{club.description}</p>
-      <NavButton to={club.id}>
+      <LinkButton to={club.id}>
         read more
-      </NavButton>
+      </LinkButton>
       {
         club.full &&
         <div className="alert alert-danger d-flex align-items-center" role="alert">

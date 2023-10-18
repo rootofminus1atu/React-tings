@@ -29,7 +29,7 @@ const objRouter = createBrowserRouter([
         element: <Clubs />,
         children: [
           {
-            path: ":clubId",  // doesn't work for some reason
+            path: ":clubId",  // didn't work for some reason
             element: <ClubDetails />
           }
         ]
