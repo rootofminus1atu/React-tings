@@ -1,6 +1,8 @@
 import React from 'react'
 import { clubs } from '../clubs'
 import ClubSummary from '../components/ClubSummary'
+import { Row } from 'react-bootstrap'
+import { Outlet } from 'react-router-dom'
 
 export default function Clubs() {
   return (
@@ -10,14 +12,13 @@ export default function Clubs() {
         <p>our clubs desc</p>
       </div>
 
-      <div className="all-clubs row content-group">
+      <Row className="all-clubs content-group">
         {
           clubs.map(club => 
             <ClubSummary key={club.id} club={club}/>
           )
         }
-      </div>
-      
+      </Row>
     </div>
   )
 }

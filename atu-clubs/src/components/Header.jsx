@@ -1,6 +1,11 @@
 import React, { useState } from 'react'
 import { Link, NavLink } from "react-router-dom"
 
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+
+
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -53,3 +58,31 @@ export default function Header() {
     </nav>
   )
 }
+
+
+/*
+looks nicer except it doesn't work
+
+<Navbar expand="lg" bg="dark" variant="dark" className="p-3">
+      <Container className="container-md container-fluid">
+        <Navbar.Brand as={Link} to="/clubs">ATUS</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={handleMenuToggle} />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link as={NavLink} to="/" onClick={closeMenu}>
+              Home
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/clubs" onClick={closeMenu}>
+              Clubs
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/register" onClick={closeMenu}>
+              Register
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/contact" onClick={closeMenu}>
+              Contact
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+*/

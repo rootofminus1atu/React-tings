@@ -1,11 +1,14 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
 
 export default function Footer() {
   return (
-    <footer className="mt-auto text-center text-lg-start bg-dark text-white"> 
-      <div className="container-fluid text-center p-4">
-        <p>&copy; 2019 ATUS Clubs & Societies</p>
-      </div>
+    <footer className='container-fluid bg-dark text-white text-center'> 
+      <Container>
+        <p className='p-4'>
+          &copy; 2019 ATUS Clubs & Societies
+        </p>
+      </Container>
     </footer>
   )
 }
