@@ -20,7 +20,7 @@ export default function Header() {
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark p-3">
       <div className="container-md container-fluid">
-        <Link to="/" className="navbar-brand" onClick={closeMenu}>ATUS</Link>
+        <Link to="/" className="navbar-brand" onClick={closeMenu}>LOGO</Link>
 
         <button
           className={`navbar-toggler ${isOpen ? 'collapsed' : ''}`}

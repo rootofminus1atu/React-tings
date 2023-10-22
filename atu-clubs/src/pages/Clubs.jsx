@@ -9,7 +9,7 @@ export default function Clubs() {
     <div className="page-group">
       <div className="content-group">
         <h1>Our clubs</h1>
-        <p>our clubs desc</p>
+        <p>our clubs desc Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima vero nemo illum nostrum nesciunt autem est enim nam soluta, harum, porro, natus dolore totam quis ab doloribus suscipit reprehenderit voluptate ea asperiores magni eveniet sequi iusto. Doloremque atque, sequi porro recusandae eos accusamus ea earum at laborum fugit deserunt assumenda?</p>
       </div>
 
       <Row className="all-clubs content-group">
