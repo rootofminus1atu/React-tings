@@ -1,0 +1,33 @@
+const contents = [
+  {
+    id: 'L.1',
+    core: true
+  },
+  {
+    id: 'L.2',
+    core: false
+  },
+  {
+    id: 'L.3',
+    core: true
+  },
+]
+
+const initialCheckboxState = contents.reduce((acc, div) => {
+    if (div.core) {
+      return {
+        ...acc,
+        [div.id]: {
+          checkbox1: false,
+          checkbox2: false,
+        },
+      };
+    } else {
+      return {
+        ...acc,
+        [div.id]: {
+          checkbox1: false,
+        },
+      };
+    }
+  }, {});

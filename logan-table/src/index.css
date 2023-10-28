@@ -1,0 +1,16 @@
+.muted-text {
+    color: rgba(0, 0, 0, 0.5) !important;
+}
+
+main .content-group {
+    padding-top: 3rem;
+}
+
+main .content-group:last-child {
+    padding: 3rem 0;
+}
+
+.padx {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
