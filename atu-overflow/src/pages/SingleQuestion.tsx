@@ -23,7 +23,7 @@ export default function SingleQuestion() {
   };
 
   return (
-    <div className='bg-gray-100 p-2 space-y-2'>
+    <div className='flex-1 bg-gray-100 p-2 space-y-2'>
       <div className='bg-gray-200 p-2'>
         <h2 className='font-bold text-2xl'>{post.title} by {post.author.username}</h2>
         <p>{post.content}</p>
@@ -45,7 +45,6 @@ export default function SingleQuestion() {
               <div className='flex flex-row'>
                 <BiLike />
                 <p>{comment.likes.length}</p>
-
                 <BiDislike />
                 <p>{comment.dislikes.length}</p>
               </div>
