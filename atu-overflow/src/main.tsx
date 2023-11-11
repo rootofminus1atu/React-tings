@@ -7,8 +7,8 @@ import Home from './pages/Home.tsx'
 import AskQuestion from './pages/AskQuestion.tsx'
 import Questions, { loader as questionsLoader } from './pages/Questions.tsx'
 import SingleQuestion, { loader as singleQuestionLoader } from './pages/SingleQuestion.tsx'
-import Users from './pages/Users.tsx'
-import SingleUser from './pages/SingleUser.tsx'
+import Users, { loader as userLoader } from './pages/Users.tsx'
+import SingleUser, { loader as singleUserLoader } from './pages/SingleUser.tsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,8 +19,8 @@ const router = createBrowserRouter(
         <Route path=":questionId" loader={singleQuestionLoader} element={<SingleQuestion />} />
       </Route>
       <Route path="users">
-        <Route index element={<Users />} />
-        <Route path=":userId" element={<SingleUser />} />
+        <Route index loader={userLoader} element={<Users />} />
+        <Route path=":userId" loader={singleUserLoader} element={<SingleUser />} />
       </Route>
     </Route>
   )

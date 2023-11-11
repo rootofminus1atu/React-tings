@@ -9,6 +9,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   // api call, search filter thing
   const posts = allPosts.filter(p => p.title.includes(q || ""))
 
+
   return posts
 }
 
