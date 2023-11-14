@@ -1,4 +1,4 @@
-import { Form, Link, LoaderFunctionArgs, Outlet, redirect, useLoaderData } from 'react-router-dom'
+import { Form, Link, LoaderFunctionArgs, useLoaderData } from 'react-router-dom'
 import { posts as allPosts, Post } from '../mockData'
 
 
@@ -41,9 +41,6 @@ export default function Questions() {
           ))}
         </div>
       </div>
-
-      <Outlet />
-
     </div>
   )
 }

@@ -2,6 +2,7 @@ export interface User {
     id: number
     username: string
     email: string
+    avatar: string
     //posts: Post[]
 }
 
@@ -32,16 +33,19 @@ export const users: User[] = [
         id: 1,
         username: "user1",
         email: "user1@example.com",
+        avatar: "https://randomoutputs.com/assets/images/tools/fruits/jostaberry.webp"
     },
     {
         id: 2,
         username: "user2",
         email: "user2@example.com",
+        avatar: "https://randomoutputs.com/assets/images/tools/fruits/date.webp"
     },
     {
         id: 3,
         username: "user3",
         email: "user3@example.com",
+        avatar: "https://randomoutputs.com/assets/images/tools/fruits/mangosteen.webp"
     },
 ]
 
