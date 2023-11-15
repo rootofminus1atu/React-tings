@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title String
+  content String
+  comments Comment[]
+  // something for likes and who liked them
+  // for now I will just have a counter
+  // so user can like a post multiple times for now...
+  // in the future we have to keep track of who liked what
+  // or who disliked
+  likes Int
+}
+
+model Comment {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  content String
+  postId String
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  // userId
+  // user
+  // read comment about likes in Post
+  likes Int
+}
+

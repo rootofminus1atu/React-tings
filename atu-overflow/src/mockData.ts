@@ -68,6 +68,15 @@ export const posts: Post[] = [
         likes: [users[0]],
         dislikes: [users[1]],
     },
+    {
+        id: 3,
+        title: "Sample Post 3",
+        content: "This is the content of the second post.",
+        author: users[1],
+        tags: ["tag3"],
+        likes: [users[0]],
+        dislikes: [users[1]],
+    },
 ]
 
 export const comments: Comment[] = [
