@@ -1,5 +1,6 @@
 import { Form, Link, LoaderFunctionArgs, useLoaderData } from 'react-router-dom'
 import { posts as allPosts, Post } from '../mockData'
+import { db } from '../prismaClient'
 
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
